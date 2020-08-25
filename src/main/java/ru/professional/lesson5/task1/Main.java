@@ -22,9 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
-    //можно переделать на численное значение, а то вдруг есть человек с фамилией "exit" с маленькой буквы...не верю)
-    public static final String EXIT = "exit";
+    public static final String EXIT = "0";
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -35,10 +33,10 @@ public class Main {
         // Заполняем arrayList (выход возможен только при заполнении и города и фамилии, во избежание сбоя работы)
         while (true) {
             if (counter % 2 == 0) {
-                System.out.println("Введите фамилию семьи или напишите "
+                System.out.println("Введите город, в котором проживает семья или напишите "
                         + EXIT + " - для завершения заполнения данных:");
             } else {
-                System.out.println("Введите город, в котором проживает семья:");
+                System.out.println("Введите фамилию семьи:");
             }
             String family = reader.readLine();
             if (family.equals(EXIT) && counter == 0) {
@@ -52,15 +50,15 @@ public class Main {
             list.add(family);
         }
 
-        // Ищем город по фамилии
+        // Ищем фамилию по городу
         while (true) {
-            System.out.println("Введите фамилию для поиска или напишите " + EXIT + " - для выхода: ");
+            System.out.println("Введите город для поиска или напишите " + EXIT + " - для выхода: ");
             String townName = reader.readLine();
             if (townName.equals(EXIT)) break;
             if (list.contains(townName)) {
-                String familyName = list.get(list.indexOf(townName) - 1);
+                String familyName = list.get(list.indexOf(townName) + 1);
                 System.out.println(familyName);
-            }
+            } else System.out.println("Такого города нет в списке");
         }
     }
 }
