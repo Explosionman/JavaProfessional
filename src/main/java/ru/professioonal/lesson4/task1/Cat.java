@@ -17,6 +17,8 @@ package ru.professioonal.lesson4.task1;
 •	Если некий кот1 выигрывает у кота кот2, то кот2 должен проигрывать коту кот1.
 */
 
+import java.io.FileWriter;
+
 public class Cat {
     public int age;
     public int weight;
